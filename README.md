@@ -1,8 +1,10 @@
 # Installation
 1. Install [Node.js](https://nodejs.org) if not installed!
-2. Run `code-install.bat`!
-3. Open `.env` and fill in your credentials!
-4. Import the `altV-authentification.sql` into your database! 
+2. Create a resource and put `client` + `server` + `resource.cfg` in!
+3. Put `.env` + `package.json` + `code-install.bat` in yout server directory
+4. Run `code-install.bat`!
+5. Open `.env` and fill in your credentials!
+6. Import the `altV-authentification.sql` into your database! 
 
 # Information
 Time of development: 5 hours
