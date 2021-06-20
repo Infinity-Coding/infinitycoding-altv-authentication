@@ -22,7 +22,7 @@ You are not allowed to sell this script.
 If you need help, feel free to join on our [Discord](https://discord.gg/8xtBezfQrT)
 
 # Credits
-- gotkoten - > [Nofify](https://github.com/godkoten/altv-notifications)
+- gotkoten - > [Notify](https://github.com/godkoten/altv-notifications)
 
 # Used Languages and tools
 <p align="left">
