@@ -75,4 +75,4 @@ function logAccountCount() {
 
 logAccountCount();
 
-alt.log("[SERVER]".green + " Loaded: " + "authentification".green);
+alt.log("[SERVER]".green + " Loaded: " + "authentication".green);
