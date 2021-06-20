@@ -21,6 +21,17 @@ connection.connect(function(error) {
     }
 });
 
+function hash(str) {
+	var hash = 0, i, chr, len;
+	if (str.length === 0) return hash;
+	for (i = 0, len = str.length; i < len; i++) {
+		chr   = str.charCodeAt(i);
+		hash  = ((hash << 5) - hash) + chr;
+		hash |= 0;
+	}
+	return hash;
+};
+
 //@playerConnect
 alt.on("playerConnect", (player) => {
     player.spawn(971.245, -1620.993, 30.111);
@@ -31,12 +42,12 @@ alt.on("playerConnect", (player) => {
 
 //@login
 alt.onClient("server:auth:validate:data", (player, account_name, account_password) => {
-    connection.query("SELECT * FROM server_accounts WHERE account_name = ? AND account_password = ?", [account_name, account_password], function(error, res) {
+    connection.query("SELECT * FROM server_accounts WHERE account_name = ? AND account_password = ?", [account_name, hash(account_password)], function(error, res) {
         if (res.length > 0) {
             alt.emitClient(player, "client:auth:success");
-            alt.emitClient(null, "client:notification:show", `Welcome ${account_name}!`, false, 121);
+            alt.emitClient(player, "client:notification:show", `Welcome ${account_name}!`, false, 121);
         } else {
-            alt.emitClient(null, "client:notification:show", "The given dates are not correct!", true, 162);
+            alt.emitClient(player, "client:notification:show", "The given dates are not correct!", true, 162);
         }
     });
 });
@@ -45,12 +56,12 @@ alt.onClient("server:auth:validate:data", (player, account_name, account_passwor
 alt.onClient("server:auth:register:data", (player, account_name, account_password) => {
     connection.query("SELECT * FROM server_accounts WHERE account_name = ?", [account_name], function(error, res) {
         if (res.length > 0) {
-            alt.emitClient(null, "client:notification:show", "Username already taken!", true, 162);
+            alt.emitClient(player, "client:notification:show", "Username already taken!", true, 162);
         } else {
-            connection.query("INSERT INTO server_accounts SET account_name = ?, account_password = ?", [account_name, account_password], function(error, res) {
+            connection.query("INSERT INTO server_accounts SET account_name = ?, account_password = ?", [account_name, hash(account_password)], function(error, res) {
                 if (res.length > 0) {
                     alt.emitClient(player, "client:auth:success");
-                    alt.emitClient(null, "client:notification:show", `Registered!`, false, 121);
+                    alt.emitClient(player, "client:notification:show", `Registered!`, false, 121);
                 }
             });
         }
