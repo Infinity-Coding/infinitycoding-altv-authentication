@@ -1,0 +1,30 @@
+{
+  "name": "infinitycoding-altv-authentification",
+  "version": "1.4.8",
+  "description": "This is the official Infinity Coding alt:V Authentification!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "keywords": [
+    "javascript",
+    "mysql",
+    "altV"
+  ],
+  "author": "Infinity2k",
+  "license": "ISC",
+  "dependencies": {
+    "@altv/native-types": "^1.0.3",
+    "@altv/types-client": "^1.6.1",
+    "@altv/types-server": "^1.8.1",
+    "colors": "^1.4.0",
+    "dotenv": "^10.0.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "@altv/types-natives": "^1.4.2",
+    "@altv/types-shared": "^1.0.0",
+    "@altv/types-webview": "^1.0.2"
+  }
+}
