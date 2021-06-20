@@ -30,25 +30,26 @@ alt.onServer("client:auth:load", () => {
         webViewAuth.on("client:auth:register:send:data", (account_name, account_password) => {
             alt.emitServer("server:auth:register:data", account_name, account_password);
         });
+		
+		alt.onServer("client:auth:success", () => {
+			webViewAuth.destroy();
+
+			alt.showCursor(false)
+			alt.toggleGameControls(true);
+			alt.clearInterval(interval);
+
+			native.renderScriptCams(false, false, 0, true, false);
+			native.destroyCam(webViewAuthCam, true);
+			native.setFollowPedCamViewMode(1);
+			native.clearFocus();
+			native.newLoadSceneStop();
+			native.displayRadar(true);
+
+			//@replaces colors
+			native.replaceHudColourWithRgba(142, 255, 255, 33, 255);
+			native.replaceHudColourWithRgba(143, 255, 255, 33, 255);
+			native.replaceHudColourWithRgba(144, 255, 255, 33, 255);
+			native.replaceHudColourWithRgba(145, 255, 255, 33, 255);
+		});
     }
-});
-
-alt.onServer("client:auth:success", () => {
-    webViewAuth.destroy();
-
-    alt.showCursor(false)
-    alt.toggleGameControls(true);
-
-    native.renderScriptCams(false, false, 0, true, false);
-    native.destroyCam(webViewAuthCam, true);
-    native.setFollowPedCamViewMode(1);
-    native.clearFocus();
-    native.newLoadSceneStop();
-    native.displayRadar(true);
-
-    //@replaces colors
-    native.replaceHudColourWithRgba(142, 255, 255, 33, 255);
-    native.replaceHudColourWithRgba(143, 255, 255, 33, 255);
-    native.replaceHudColourWithRgba(144, 255, 255, 33, 255);
-    native.replaceHudColourWithRgba(145, 255, 255, 33, 255);
 });
