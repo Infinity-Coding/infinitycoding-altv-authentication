@@ -7,9 +7,9 @@
 6. Import the `altV-authentification.sql` into your database! 
 
 # Information
-Time of development: 5 hours
-Lines of code: about 308
-Developed by: infinity2k#7449
+- Time of development: 5 hours
+- Lines of code: about 308
+- Developed by: infinity2k#7449
 
 You are not allowed to sell this script. 
 
